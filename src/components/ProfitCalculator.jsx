@@ -43,12 +43,12 @@ export default function ProfitCalculator({ onCalculateInteraction }) {
             <div className="card-shine"></div>
             <div className="card-header">
                 <span className="card-icon">⚡</span>
-                <h2>Future Value Calculator</h2>
+                <h2>Calculateur de Valeur Future</h2>
             </div>
             <div className="calculator-inputs">
                 <div className="input-group">
                     <div className="input-labels">
-                        <label htmlFor="calc-initial">Initial Capital</label>
+                        <label htmlFor="calc-initial">Capital Initial</label>
                         <span className="input-val-display" id="display-initial">{formatCurrency(initial)}</span>
                     </div>
                     <input type="range" id="calc-initial" min="1000" max="250000" step="1000" value={initial} onChange={handleInput(setInitial)} />
@@ -56,7 +56,7 @@ export default function ProfitCalculator({ onCalculateInteraction }) {
 
                 <div className="input-group">
                     <div className="input-labels">
-                        <label htmlFor="calc-monthly">Monthly Addition</label>
+                        <label htmlFor="calc-monthly">Ajout Mensuel</label>
                         <span className="input-val-display" id="display-monthly">{formatCurrency(monthly)}</span>
                     </div>
                     <input type="range" id="calc-monthly" min="0" max="10000" step="100" value={monthly} onChange={handleInput(setMonthly)} />
@@ -65,15 +65,15 @@ export default function ProfitCalculator({ onCalculateInteraction }) {
                 <div className="input-group-row">
                     <div className="input-group half">
                         <div className="input-labels">
-                            <label htmlFor="calc-return">Annual APY (%)</label>
+                            <label htmlFor="calc-return">Rendement Annuel (%)</label>
                             <span className="input-val-display" id="display-return">{Math.round(annualRate)}%</span>
                         </div>
                         <input type="range" id="calc-return" min="5" max="80" step="1" value={annualRate} onChange={handleInput(setAnnualRate)} />
                     </div>
                     <div className="input-group half">
                         <div className="input-labels">
-                            <label htmlFor="calc-years">Duration (Years)</label>
-                            <span className="input-val-display" id="display-years">{years} Year{years > 1 ? 's' : ''}</span>
+                            <label htmlFor="calc-years">Durée (Années)</label>
+                            <span className="input-val-display" id="display-years">{years} Année{years > 1 ? 's' : ''}</span>
                         </div>
                         <input type="range" id="calc-years" min="1" max="20" step="1" value={years} onChange={handleInput(setYears)} />
                     </div>
@@ -85,23 +85,23 @@ export default function ProfitCalculator({ onCalculateInteraction }) {
             <div className="calculator-results">
                 <div className="results-grid">
                     <div className="result-box highlighted">
-                        <span className="result-label">PROJECTED PORTFOLIO</span>
+                        <span className="result-label">PORTFEUILLE PROJETÉ</span>
                         <span className="result-value" id="res-total-value">{formatCurrency(totalPortfolio)}</span>
                     </div>
                     <div className="result-box">
-                        <span className="result-label">TOTAL PRINCIPAL</span>
+                        <span className="result-label">CAPITAL TOTAL</span>
                         <span className="result-value" id="res-total-principal">{formatCurrency(totalInvested)}</span>
                     </div>
                     <div className="result-box">
-                        <span className="result-label">INTEREST EARNED</span>
+                        <span className="result-label">INTÉRÊTS GAGNÉS</span>
                         <span className="result-value pos" id="res-total-interest">{formatCurrency(interestEarned)}</span>
                     </div>
                 </div>
 
                 <div className="visualizer-container">
                     <div className="visualizer-labels">
-                        <span>Principal</span>
-                        <span>Interest</span>
+                        <span>Capital</span>
+                        <span>Intérêts</span>
                     </div>
                     <div className="bar-visualizer">
                         <div className="bar-fill principal-fill" style={{ width: `${principalPct}%` }}></div>

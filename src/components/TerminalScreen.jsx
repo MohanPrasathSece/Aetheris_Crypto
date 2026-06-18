@@ -9,11 +9,11 @@ export default function TerminalScreen({ isVisible, onRestoreSuccess }) {
     const inputRef = useRef(null);
 
     const logSequence = [
-        { text: '>>> SECURE CONNECTION SHUTDOWN...', color: '#ff5f56', delay: 500 },
-        { text: '>>> DISMANTLING WEB PACKAGES [OK]', color: '#1aff80', delay: 850 },
-        { text: '>>> DESTROYING 3D BITCOIN NODE ASSETS [OK]', color: '#1aff80', delay: 1200 },
-        { text: '>>> CORE ENGINE SHUTDOWN... [AETHERIS_OFFLINE]', color: '#ff5f56', delay: 1550 },
-        { text: 'SYSTEM LOCKED', color: '#ff3838', type: 'header', delay: 1900 }
+        { text: '>>> FERMETURE DE LA CONNEXION SÉCURISÉE...', color: '#ff5f56', delay: 500 },
+        { text: '>>> DÉMANTÈLEMENT DES PAQUETS WEB [OK]', color: '#1aff80', delay: 850 },
+        { text: '>>> DESTRUCTION DES ACTIFS DU NŒUD BITCOIN 3D [OK]', color: '#1aff80', delay: 1200 },
+        { text: '>>> ARRÊT DU MOTEUR PRINCIPAL... [AETHERIS_HORS_LIGNE]', color: '#ff5f56', delay: 1550 },
+        { text: 'SYSTÈME VERROUILLÉ', color: '#ff3838', type: 'header', delay: 1900 }
     ];
 
     useEffect(() => {
@@ -75,14 +75,14 @@ export default function TerminalScreen({ isVisible, onRestoreSuccess }) {
                     <span className="terminal-dot red"></span>
                     <span className="terminal-dot yellow"></span>
                     <span className="terminal-dot green"></span>
-                    <span className="terminal-title">SYSTEM_CORE_LOG</span>
+                    <span className="terminal-title">JOURNAL_NOYAU_SYSTEME</span>
                 </div>
                 <div className="terminal-body">
                     {/* Default messages */}
-                    <p className="error-msg">{'>>> SYSTEM INTRUSION DETECTED...'}</p>
-                    <p className="error-msg">{'>>> INITIALIZING DISMANTLE PROTOCOL...'}</p>
-                    <p className="error-msg">{'>>> TERMINATING WEB ASSETS...'}</p>
-                    <p className="error-msg">{'>>> DESTRUCTING 3D_BITCOIN_CORE...'}</p>
+                    <p className="error-msg">{'>>> INTRUSION SYSTÈME DÉTECTÉE...'}</p>
+                    <p className="error-msg">{'>>> INITIALISATION DU PROTOCOLE DE DÉMANTÈLEMENT...'}</p>
+                    <p className="error-msg">{'>>> TERMINAISON DES ACTIFS WEB...'}</p>
+                    <p className="error-msg">{'>>> DESTRUCTION DE 3D_BITCOIN_CORE...'}</p>
 
                     {/* Printed lines */}
                     {lines.map((line, idx) => {
@@ -92,10 +92,10 @@ export default function TerminalScreen({ isVisible, onRestoreSuccess }) {
                         return <p key={idx} style={{ color: line.color }}>{line.text}</p>;
                     })}
 
-                    <p className="system-status">All connections severed. Web presence offline.</p>
+                    <p className="system-status">Toutes les connexions sont coupées. Présence web hors ligne.</p>
                     
                     <div className={`recovery-box ${showRecovery ? '' : 'hidden'}`}>
-                        <p className="restore-hint">Secure restore interface: Enter recovery key</p>
+                        <p className="restore-hint">Interface de restauration sécurisée : Entrez la clé de récupération</p>
                         <div className="restore-input-group">
                             <input 
                                 type="password" 
@@ -107,9 +107,9 @@ export default function TerminalScreen({ isVisible, onRestoreSuccess }) {
                                 onKeyDown={handleKeyDown}
                                 ref={inputRef}
                             />
-                            <button id="btn-restore" onClick={attemptRestore}>RESTORE SYSTEM</button>
+                            <button id="btn-restore" onClick={attemptRestore}>RESTAURER LE SYSTÈME</button>
                         </div>
-                        <span id="restore-error" className={restoreError ? '' : 'hidden'}>INVALID SECURITY CREDENTIALS</span>
+                        <span id="restore-error" className={restoreError ? '' : 'hidden'}>IDENTIFIANTS DE SÉCURITÉ INVALIDES</span>
                     </div>
                 </div>
             </div>

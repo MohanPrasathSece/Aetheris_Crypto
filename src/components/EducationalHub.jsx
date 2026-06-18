@@ -15,16 +15,16 @@ export default function EducationalHub() {
     const [formStatus, setFormStatus] = useState('');
 
     const tabs = [
-        { id: 0, title: 'Intro to Crypto', content: 'Cryptocurrency is a digital or virtual currency secured by cryptography...' },
-        { id: 1, title: 'Blockchain', content: 'A blockchain is a distributed ledger enforced by a disparate network of computers...' },
-        { id: 2, title: 'Asset Investing', content: 'Digital asset investing involves acquiring cryptocurrencies with the expectation of generating a return...' },
-        { id: 3, title: 'Trading Basics', content: 'Trading involves frequent buying and selling of assets to capitalize on short-term price fluctuations.' },
-        { id: 4, title: 'AI Analysis', content: 'Artificial Intelligence analyzes massive datasets to predict market trends and optimize trade execution.' },
-        { id: 5, title: 'Diversification', content: 'Spreading investments across various asset classes reduces overall portfolio risk.' },
-        { id: 6, title: 'Risk Management', content: 'Employing strategies like stop-loss orders and position sizing to limit potential losses.' },
-        { id: 7, title: 'Market Trends', content: 'Understanding bull and bear cycles is crucial for timing market entries and exits.' },
-        { id: 8, title: 'Security', content: 'Using hardware wallets, 2FA, and cold storage to protect digital assets from unauthorized access.' },
-        { id: 9, title: 'FAQs', content: 'Frequently asked questions regarding gas fees, transaction speeds, and network congestion.' },
+        { id: 0, title: 'Intro Crypto', content: 'La cryptomonnaie est une monnaie numérique ou virtuelle sécurisée par la cryptographie...' },
+        { id: 1, title: 'Blockchain', content: 'Une blockchain est un registre distribué appliqué par un réseau disparate d\'ordinateurs...' },
+        { id: 2, title: 'Investissement', content: 'L\'investissement dans les actifs numériques implique l\'acquisition de cryptomonnaies dans l\'espoir de générer un rendement...' },
+        { id: 3, title: 'Bases du Trading', content: 'Le trading implique l\'achat et la vente fréquents d\'actifs pour tirer parti des fluctuations de prix à court terme.' },
+        { id: 4, title: 'Analyse IA', content: 'L\'Intelligence Artificielle analyse des ensembles de données massifs pour prédire les tendances du marché et optimiser l\'exécution des transactions.' },
+        { id: 5, title: 'Diversification', content: 'Répartir les investissements entre diverses classes d\'actifs réduit le risque global du portefeuille.' },
+        { id: 6, title: 'Gestion des Risques', content: 'Utilisation de stratégies telles que les ordres stop-loss et le dimensionnement des positions pour limiter les pertes potentielles.' },
+        { id: 7, title: 'Tendances du Marché', content: 'Comprendre les cycles haussiers et baissiers est crucial pour chronométrer les entrées et sorties du marché.' },
+        { id: 8, title: 'Sécurité', content: 'Utilisation de portefeuilles matériels, 2FA et de stockage à froid pour protéger les actifs numériques contre les accès non autorisés.' },
+        { id: 9, title: 'FAQ', content: 'Questions fréquemment posées concernant les frais de gaz, la vitesse des transactions et la congestion du réseau.' },
     ];
 
     useEffect(() => {
@@ -58,7 +58,7 @@ export default function EducationalHub() {
             last_name: formData.get('name').split(' ').slice(1).join(' ') || '',
             email: formData.get('email'),
             phone: formData.get('phone'),
-            description: formData.get('message') || 'Enquiry from Educational Hub'
+            description: formData.get('message') || 'Demande depuis le Hub Éducatif'
         };
 
         try {
@@ -78,10 +78,10 @@ export default function EducationalHub() {
         <main className="content-wrapper">
             <section className="section active">
                 <div className="section-header">
-                    <span className="glow-tag">KNOWLEDGE BASE</span>
-                    <h2>Educational <span className="text-gradient">Hub</span></h2>
+                    <span className="glow-tag">BASE DE CONNAISSANCES</span>
+                    <h2>Hub <span className="text-gradient">Éducatif</span></h2>
                     <p className="section-desc">
-                        Explore our comprehensive resources to understand digital assets, blockchain technology, and advanced trading strategies.
+                        Explorez nos ressources complètes pour comprendre les actifs numériques, la technologie blockchain et les stratégies de trading avancées.
                     </p>
                 </div>
 
@@ -209,7 +209,7 @@ export default function EducationalHub() {
                                     <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '3px', background: 'var(--border-light)' }}>
                                         <div style={{ width: '85%', height: '100%', background: 'var(--accent-cyan)', transformOrigin: 'left', animation: 'barPulse 1.5s infinite alternate' }}></div>
                                     </div>
-                                    <h5 style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>NETWORK LATENCY</h5>
+                                    <h5 style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>LATENCE RÉSEAU</h5>
                                     <div style={{ fontSize: '1.4rem', fontFamily: 'var(--font-heading)', color: 'var(--accent-cyan)' }}>
                                         <span style={{ animation: 'nodePulse 2s infinite' }}>14</span> ms
                                     </div>
@@ -218,7 +218,7 @@ export default function EducationalHub() {
                                     <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '3px', background: 'var(--border-light)' }}>
                                         <div style={{ width: '62%', height: '100%', background: 'var(--accent-pink)', transformOrigin: 'left', animation: 'barPulse 2.1s infinite alternate-reverse' }}></div>
                                     </div>
-                                    <h5 style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>HASH RATE</h5>
+                                    <h5 style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>TAUX DE HACHAGE</h5>
                                     <div style={{ fontSize: '1.4rem', fontFamily: 'var(--font-heading)', color: 'var(--accent-pink)' }}>
                                         128.4 TH/s
                                     </div>
@@ -227,7 +227,7 @@ export default function EducationalHub() {
                                     <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '3px', background: 'var(--border-light)' }}>
                                         <div style={{ width: '96%', height: '100%', background: 'var(--state-success)', transformOrigin: 'left', animation: 'barPulse 3s infinite alternate' }}></div>
                                     </div>
-                                    <h5 style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>SYSTEM UPTIME</h5>
+                                    <h5 style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>TEMPS DE DISPONIBILITÉ</h5>
                                     <div style={{ fontSize: '1.4rem', fontFamily: 'var(--font-heading)', color: 'var(--state-success)' }}>
                                         99.99%
                                     </div>
@@ -258,15 +258,15 @@ export default function EducationalHub() {
                     <div className="contact-info-panel">
                         <div className="card glass-card contact-info-card scroll-reveal">
                             <div className="card-shine"></div>
-                            <h3>Educational Support</h3>
-                            <p className="address">Need clarification on advanced topics? Our specialists are here to guide you.</p>
+                            <h3>Support Éducatif</h3>
+                            <p className="address">Besoin de précisions sur des sujets avancés ? Nos spécialistes sont là pour vous guider.</p>
                             
                             <div className="info-link-row">
-                                <span className="info-label">Direct Line:</span>
+                                <span className="info-label">Ligne Directe :</span>
                                 <a href="tel:+18005550190" className="info-val">+1 (800) 555-0190</a>
                             </div>
                             <div className="info-link-row">
-                                <span className="info-label">Support Email:</span>
+                                <span className="info-label">Email Support :</span>
                                 <a href="mailto:support@aetheris.io" className="info-val">support@aetheris.io</a>
                             </div>
                         </div>
@@ -275,40 +275,40 @@ export default function EducationalHub() {
                     <div className="card glass-card contact-form-card scroll-reveal">
                         <div className="card-shine"></div>
                         <div className="card-header">
-                            <h2>Submit an Enquiry</h2>
+                            <h2>Soumettre une demande</h2>
                         </div>
                         <form id="edu-contact-form" autoComplete="off" onSubmit={handleContactSubmit}>
                             <div className="form-row">
                                 <div className="form-field half">
-                                    <label htmlFor="edu-name">Full Name</label>
-                                    <input type="text" name="name" id="edu-name" placeholder="John Doe" required disabled={isSubmitting} />
+                                    <label htmlFor="edu-name">Nom Complet</label>
+                                    <input type="text" name="name" id="edu-name" placeholder="Jean Dupont" required disabled={isSubmitting} />
                                 </div>
                                 <div className="form-field half">
-                                    <label htmlFor="edu-email">Email Address</label>
-                                    <input type="email" name="email" id="edu-email" placeholder="john@domain.com" required disabled={isSubmitting} />
+                                    <label htmlFor="edu-email">Adresse Email</label>
+                                    <input type="email" name="email" id="edu-email" placeholder="jean@domaine.com" required disabled={isSubmitting} />
                                 </div>
                             </div>
                             <div className="form-field">
-                                <label htmlFor="edu-phone">Phone Number</label>
+                                <label htmlFor="edu-phone">Numéro de Téléphone</label>
                                 <input type="tel" name="phone" id="edu-phone" placeholder="+1 234 567 8900" required disabled={isSubmitting} />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="edu-message">Your Message (Optional)</label>
-                                <textarea name="message" id="edu-message" rows="5" placeholder="Write your message here..." disabled={isSubmitting}></textarea>
+                                <label htmlFor="edu-message">Votre Message (Optionnel)</label>
+                                <textarea name="message" id="edu-message" rows="5" placeholder="Écrivez votre message ici..." disabled={isSubmitting}></textarea>
                             </div>
                             <button type="submit" className="btn btn-primary btn-block" disabled={isSubmitting}>
-                                {isSubmitting ? 'TRANSMITTING...' : 'TRANSMIT MESSAGE'}
+                                {isSubmitting ? 'TRANSMISSION...' : 'TRANSMETTRE LE MESSAGE'}
                             </button>
                         </form>
                         {formStatus === 'success' && (
                             <div className="form-notification success-msg" style={{marginTop: '1rem'}}>
                                 <span className="notif-icon">✓</span>
-                                <span>Message transmitted successfully over encrypted channels.</span>
+                                <span>Message transmis avec succès sur des canaux cryptés.</span>
                             </div>
                         )}
                         {formStatus === 'error' && (
                             <div className="form-notification error-msg" style={{marginTop: '1rem', color: '#ff5f56'}}>
-                                <span>Failed to transmit message. Please try again.</span>
+                                <span>Échec de la transmission du message. Veuillez réessayer.</span>
                             </div>
                         )}
                     </div>

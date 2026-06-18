@@ -197,7 +197,7 @@ function App() {
             last_name: formData.get('name').split(' ').slice(1).join(' ') || '',
             email: formData.get('email'),
             phone: formData.get('phone'),
-            description: formData.get('message') || 'Enquiry from Home Page'
+            description: formData.get('message') || 'Demande depuis la Page d\'Accueil'
         };
 
         try {
@@ -269,21 +269,21 @@ function App() {
                     {!isLoggedIn ? (
                         <>
                             <nav className="nav-links">
-                                <a href="#home" className={`nav-link ${activePage === 'home' && activeSection === 'home' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); navigateTo('home', 'home'); }}>Home</a>
-                                <a href="#about" className={`nav-link ${activePage === 'home' && activeSection === 'about' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); navigateTo('home', 'about'); }}>About</a>
-                                <a href="#security" className={`nav-link ${activePage === 'home' && activeSection === 'security' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); navigateTo('home', 'security'); }}>Security</a>
-                                <a href="#roadmap" className={`nav-link ${activePage === 'home' && activeSection === 'roadmap' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); navigateTo('home', 'roadmap'); }}>Roadmap</a>
+                                <a href="#home" className={`nav-link ${activePage === 'home' && activeSection === 'home' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); navigateTo('home', 'home'); }}>Accueil</a>
+                                <a href="#about" className={`nav-link ${activePage === 'home' && activeSection === 'about' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); navigateTo('home', 'about'); }}>À Propos</a>
+                                <a href="#security" className={`nav-link ${activePage === 'home' && activeSection === 'security' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); navigateTo('home', 'security'); }}>Sécurité</a>
+                                <a href="#roadmap" className={`nav-link ${activePage === 'home' && activeSection === 'roadmap' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); navigateTo('home', 'roadmap'); }}>Feuille de Route</a>
                                 <a href="#contact-sec" className={`nav-link ${activePage === 'home' && activeSection === 'contact-sec' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); navigateTo('home', 'contact-sec'); }}>Contact</a>
                             </nav>
                             <div className="auth-buttons">
-                                <button className="btn btn-secondary" onClick={() => { playBtnSound('secondary'); setActiveModal('login'); }}>Login</button>
-                                <button className="btn btn-primary" onClick={() => { playBtnSound('primary'); setActiveModal('signup'); }}>Sign Up</button>
+                                <button className="btn btn-secondary" onClick={() => { playBtnSound('secondary'); setActiveModal('login'); }}>Connexion</button>
+                                <button className="btn btn-primary" onClick={() => { playBtnSound('primary'); setActiveModal('signup'); }}>S'inscrire</button>
                             </div>
                         </>
                     ) : (
                         <div className="auth-buttons">
-                            <span style={{marginRight: '1rem', color: '#00f2fe', fontWeight: '500'}}>Node Connected</span>
-                            <button className="btn btn-outline" onClick={handleLogout}>Log Out</button>
+                            <span style={{marginRight: '1rem', color: '#00f2fe', fontWeight: '500'}}>Nœud Connecté</span>
+                            <button className="btn btn-outline" onClick={handleLogout}>Déconnexion</button>
                         </div>
                     )}
                 </header>
@@ -297,27 +297,27 @@ function App() {
                         <section id="home" className={`section ${activeSection === 'home' ? 'active' : ''}`}>
                             <div className="hero-grid">
                                 <div className="hero-text-content">
-                                    <div className="glow-tag">NEXT-GEN QUANTUM ALGORITHMS</div>
-                                    <h1>Invest in the Future of <span className="text-gradient">Digital Assets</span></h1>
+                                    <div className="glow-tag">ALGORITHMES QUANTIQUES NOUVELLE GÉNÉRATION</div>
+                                    <h1>Investissez dans l'Avenir des <span className="text-gradient">Actifs Numériques</span></h1>
                                     <p className="lead">
-                                        Experience institutional-grade cryptocurrency management powered by neural trading bots and real-time smart risk assessment. Maximize yield while mitigating volatility.
+                                        Découvrez une gestion de cryptomonnaie de niveau institutionnel alimentée par des bots de trading neuronaux et une évaluation intelligente des risques en temps réel. Maximisez le rendement tout en atténuant la volatilité.
                                     </p>
                                     <div className="hero-actions">
-                                        <button className="btn btn-primary btn-large" onClick={handleCalcExplore}>Calculate Yields</button>
-                                        <button className="btn btn-outline btn-large" onClick={() => navigateTo('home', 'about')}>Learn Strategy</button>
+                                        <button className="btn btn-primary btn-large" onClick={handleCalcExplore}>Calculer les Rendements</button>
+                                        <button className="btn btn-outline btn-large" onClick={() => navigateTo('home', 'about')}>Apprendre la Stratégie</button>
                                     </div>
                                     <div className="stats-row">
                                         <div className="stat-item">
                                             <span className="stat-num">$2.4B+</span>
-                                            <span className="stat-lbl">Assets Managed</span>
+                                            <span className="stat-lbl">Actifs Gérés</span>
                                         </div>
                                         <div className="stat-item">
                                             <span className="stat-num">24.8%</span>
-                                            <span className="stat-lbl">Avg. Annual APY</span>
+                                            <span className="stat-lbl">Rendement Annuel Moyen</span>
                                         </div>
                                         <div className="stat-item">
                                             <span className="stat-num">142K+</span>
-                                            <span className="stat-lbl">Active Investors</span>
+                                            <span className="stat-lbl">Investisseurs Actifs</span>
                                         </div>
                                     </div>
                                 </div>
@@ -329,10 +329,10 @@ function App() {
                             <div className="about-grid">
                                 <div className="about-features">
                                     <div className="section-header" style={{ textAlign: 'left', margin: '0 0 2rem 0' }}>
-                                        <span className="glow-tag">HOW WE OPERATE</span>
-                                        <h2>Investing Made <span className="text-gradient">Smarter & Efficient</span></h2>
+                                        <span className="glow-tag">COMMENT NOUS OPÉRONS</span>
+                                        <h2>L'Investissement Rendu <span className="text-gradient">Plus Intelligent & Efficace</span></h2>
                                         <p className="section-desc" style={{ maxWidth: '100%' }}>
-                                            Our platform removes the guesswork from cryptocurrency investing. We combine deep liquidity, advanced risk models, and neural network algorithms to guarantee secure and efficient wealth generation.
+                                            Notre plateforme élimine les conjectures de l'investissement en cryptomonnaie. Nous combinons une liquidité profonde, des modèles de risque avancés et des algorithmes de réseaux neuronaux pour garantir une génération de richesse sécurisée et efficace.
                                         </p>
                                     </div>
 
@@ -340,8 +340,8 @@ function App() {
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">🛡️</div>
                                         <div className="feature-info">
-                                            <h3>Automated Risk Management</h3>
-                                            <p>Our algorithm continuously monitors market volatility indices, dynamically rebalancing your portfolio into stable assets during extreme market drawdowns to preserve your capital.</p>
+                                            <h3>Gestion Automatisée des Risques</h3>
+                                            <p>Notre algorithme surveille en permanence les indices de volatilité du marché, rééquilibrant dynamiquement votre portefeuille vers des actifs stables lors de baisses extrêmes du marché pour préserver votre capital.</p>
                                         </div>
                                     </div>
 
@@ -349,8 +349,8 @@ function App() {
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">📊</div>
                                         <div className="feature-info">
-                                            <h3>Advanced Smart-Yield Farming</h3>
-                                            <p>Aetheris scans protocols across multiple chains to find the highest yielding, audited liquidity pools, putting your capital to work with zero gas costs on your end.</p>
+                                            <h3>Agriculture de Rendement Intelligente Avancée</h3>
+                                            <p>Aetheris analyse les protocoles sur plusieurs chaînes pour trouver les pools de liquidité audités offrant les meilleurs rendements, faisant travailler votre capital sans frais de gaz pour vous.</p>
                                         </div>
                                     </div>
 
@@ -358,8 +358,8 @@ function App() {
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">⚡</div>
                                         <div className="feature-info">
-                                            <h3>Instant Fiat-Crypto Gateway</h3>
-                                            <p>Deposit funds securely using standard credit cards, wire transfers, or Apple Pay. Withdraw directly to your local bank account in seconds, with zero processing delay.</p>
+                                            <h3>Passerelle Fiat-Crypto Instantanée</h3>
+                                            <p>Déposez des fonds en toute sécurité à l'aide de cartes de crédit standard, de virements bancaires ou d'Apple Pay. Retirez directement sur votre compte bancaire local en quelques secondes, sans délai de traitement.</p>
                                         </div>
                                     </div>
 
@@ -367,8 +367,8 @@ function App() {
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">🌐</div>
                                         <div className="feature-info">
-                                            <h3>Algorithmic Arbitrage</h3>
-                                            <p>Our systems detect and exploit micro-inefficiencies across dozens of global exchanges, executing thousands of high-frequency trades per second to generate consistent delta-neutral returns.</p>
+                                            <h3>Arbitrage Algorithmique</h3>
+                                            <p>Nos systèmes détectent et exploitent les micro-inefficacités sur des dizaines d'échanges mondiaux, exécutant des milliers de transactions à haute fréquence par seconde pour générer des rendements constants neutres en delta.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -378,7 +378,7 @@ function App() {
                                         <div className="card-shine"></div>
                                         <div className="visual-header">
                                             <span className="status-pulse"></span>
-                                            <h4>INTELLIGENT ALLOCATION SYSTEM</h4>
+                                            <h4>SYSTÈME D'ALLOCATION INTELLIGENT</h4>
                                         </div>
                                         <div className="circular-progress-container">
                                             <div className="circular-chart">
@@ -390,14 +390,14 @@ function App() {
                                                 </svg>
                                                 <div className="circular-center-text">
                                                     <span className="alloc-num">94.8%</span>
-                                                    <span className="alloc-lbl">Yield efficiency</span>
+                                                    <span className="alloc-lbl">Efficacité du rendement</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="legend-list">
-                                            <div className="legend-item"><span className="legend-dot color-1"></span> BTC Arbitrage (45%)</div>
-                                            <div className="legend-item"><span className="legend-dot color-2"></span> Multi-chain Yield (35%)</div>
-                                            <div className="legend-item"><span className="legend-dot color-3"></span> Stable Liquidity (20%)</div>
+                                            <div className="legend-item"><span className="legend-dot color-1"></span> Arbitrage BTC (45%)</div>
+                                            <div className="legend-item"><span className="legend-dot color-2"></span> Rendement Multi-chaînes (35%)</div>
+                                            <div className="legend-item"><span className="legend-dot color-3"></span> Liquidité Stable (20%)</div>
                                         </div>
                                     </div>
                                 </div>
@@ -408,42 +408,42 @@ function App() {
                             <div className="about-grid">
                                 <div className="about-features" style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem' }}>
                                     <div className="section-header" style={{ textAlign: 'left', margin: '0 0 1rem 0' }}>
-                                        <span className="glow-tag">MILITARY GRADE</span>
-                                        <h2>Quantum-Resistant <span className="text-gradient">Security Protocol</span></h2>
+                                        <span className="glow-tag">NIVEAU MILITAIRE</span>
+                                        <h2>Protocole de Sécurité <span className="text-gradient">Résistant aux Quantiques</span></h2>
                                         <p className="section-desc" style={{ maxWidth: '100%' }}>
-                                            Your assets are secured by offline cold storage, multi-signature authentication, and post-quantum cryptographic primitives.
+                                            Vos actifs sont sécurisés par un stockage à froid hors ligne, une authentification multi-signatures et des primitives cryptographiques post-quantiques.
                                         </p>
                                     </div>
                                     <div className="card glass-card feature-card scroll-reveal reveal-delay-1" style={{ width: '100%' }}>
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">🔒</div>
                                         <div className="feature-info">
-                                            <h3>Cold Storage Vaults</h3>
-                                            <p>98% of all digital assets are kept offline in geographically distributed, EMP-shielded vaults with multi-sig requirements.</p>
+                                            <h3>Coffres de Stockage à Froid</h3>
+                                            <p>98 % de tous les actifs numériques sont conservés hors ligne dans des coffres répartis géographiquement, protégés contre les IEM, avec des exigences multi-signatures.</p>
                                         </div>
                                     </div>
                                     <div className="card glass-card feature-card scroll-reveal reveal-delay-2" style={{ width: '100%' }}>
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">🛡️</div>
                                         <div className="feature-info">
-                                            <h3>$500M Insurance Policy</h3>
-                                            <p>Every account is backed by a comprehensive insurance policy underwritten by top-tier global syndicates against unauthorized access.</p>
+                                            <h3>Police d'Assurance de 500M$</h3>
+                                            <p>Chaque compte est couvert par une police d'assurance complète souscrite par des syndicats mondiaux de premier plan contre les accès non autorisés.</p>
                                         </div>
                                     </div>
                                     <div className="card glass-card feature-card scroll-reveal reveal-delay-1" style={{ width: '100%' }}>
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">👁️</div>
                                         <div className="feature-info">
-                                            <h3>Zero-Knowledge Proofs</h3>
-                                            <p>All internal transaction routing utilizes zk-SNARK technology, ensuring your trading patterns and portfolio balance remain mathematically invisible on the blockchain.</p>
+                                            <h3>Preuves à Divulgation Nulle de Connaissance</h3>
+                                            <p>Tout le routage interne des transactions utilise la technologie zk-SNARK, garantissant que vos modèles de trading et le solde de votre portefeuille restent mathématiquement invisibles sur la blockchain.</p>
                                         </div>
                                     </div>
                                     <div className="card glass-card feature-card scroll-reveal reveal-delay-2" style={{ width: '100%' }}>
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">🚨</div>
                                         <div className="feature-info">
-                                            <h3>24/7 Threat Monitoring</h3>
-                                            <p>Our proprietary AI-driven surveillance system monitors withdrawal patterns in real-time, automatically freezing accounts if anomalous or unauthorized access is detected.</p>
+                                            <h3>Surveillance des Menaces 24/7</h3>
+                                            <p>Notre système de surveillance exclusif basé sur l'IA surveille les modèles de retrait en temps réel, gelant automatiquement les comptes si un accès anormal ou non autorisé est détecté.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -455,42 +455,42 @@ function App() {
                             <div className="about-grid">
                                 <div className="about-features" style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem' }}>
                                     <div className="section-header" style={{ textAlign: 'left', margin: '0 0 1rem 0' }}>
-                                        <span className="glow-tag">FUTURE FORWARD</span>
-                                        <h2>Platform <span className="text-gradient">Roadmap</span></h2>
+                                        <span className="glow-tag">TOURNÉ VERS L'AVENIR</span>
+                                        <h2><span className="text-gradient">Feuille de Route</span> de la Plateforme</h2>
                                         <p className="section-desc" style={{ maxWidth: '100%' }}>
-                                            We are continuously evolving. Here is what is on the horizon for the Aetheris ecosystem.
+                                            Nous évoluons continuellement. Voici ce qui se profile à l'horizon pour l'écosystème Aetheris.
                                         </p>
                                     </div>
                                     <div className="card glass-card feature-card scroll-reveal reveal-delay-1" style={{ width: '100%', borderColor: 'var(--accent-cyan)' }}>
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">Q1</div>
                                         <div className="feature-info">
-                                            <h3>Neural Net V2 Rollout</h3>
-                                            <p>Upgrading our core algorithm to process 10x more market variables in real-time.</p>
+                                            <h3>Déploiement du Réseau Neuronal V2</h3>
+                                            <p>Mise à niveau de notre algorithme principal pour traiter 10 fois plus de variables de marché en temps réel.</p>
                                         </div>
                                     </div>
                                     <div className="card glass-card feature-card scroll-reveal reveal-delay-2" style={{ width: '100%' }}>
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">Q2</div>
                                         <div className="feature-info">
-                                            <h3>Institutional API Access</h3>
-                                            <p>Direct REST & WebSocket connections for algorithmic trading desks and hedge funds.</p>
+                                            <h3>Accès API Institutionnel</h3>
+                                            <p>Connexions directes REST et WebSocket pour les bureaux de trading algorithmique et les fonds spéculatifs.</p>
                                         </div>
                                     </div>
                                     <div className="card glass-card feature-card scroll-reveal reveal-delay-1" style={{ width: '100%' }}>
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">Q3</div>
                                         <div className="feature-info">
-                                            <h3>Decentralized Exchange (DEX)</h3>
-                                            <p>Launch of our native cross-chain DEX, allowing users to trade synthetic assets directly from their cold storage wallets.</p>
+                                            <h3>Échange Décentralisé (DEX)</h3>
+                                            <p>Lancement de notre DEX cross-chain natif, permettant aux utilisateurs de trader des actifs synthétiques directement depuis leurs portefeuilles de stockage à froid.</p>
                                         </div>
                                     </div>
                                     <div className="card glass-card feature-card scroll-reveal reveal-delay-2" style={{ width: '100%' }}>
                                         <div className="card-shine"></div>
                                         <div className="feature-icon">Q4</div>
                                         <div className="feature-info">
-                                            <h3>Global Banking Expansion</h3>
-                                            <p>Establishing direct settlement networks with European and Asian banking partners to enable instantaneous multi-currency fiat ramps.</p>
+                                            <h3>Expansion Bancaire Mondiale</h3>
+                                            <p>Établissement de réseaux de règlement direct avec des partenaires bancaires européens et asiatiques pour permettre des rampes fiat multidevises instantanées.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -502,28 +502,28 @@ function App() {
                             <div className="about-grid" style={{ alignItems: 'start' }}>
                                 <div className="about-features" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                                     <div className="section-header" style={{ textAlign: 'left', margin: '0' }}>
-                                        <span className="glow-tag">CONNECT WITH US</span>
-                                        <h2>Let's Build Your <span className="text-gradient">Crypto Legacy</span></h2>
+                                        <span className="glow-tag">CONNECTEZ-VOUS AVEC NOUS</span>
+                                        <h2>Construisons Votre <span className="text-gradient">Héritage Crypto</span></h2>
                                         <p className="section-desc" style={{ maxWidth: '100%' }}>
-                                            Have questions about our security, regulatory compliance, or investment strategy? Reach out to our dedicated client relations department for immediate assistance.
+                                            Vous avez des questions sur notre sécurité, notre conformité réglementaire ou notre stratégie d'investissement ? Contactez notre département des relations clients dédié pour une assistance immédiate.
                                         </p>
                                     </div>
 
                                     <div className="card glass-card contact-info-card scroll-reveal">
                                         <div className="card-shine"></div>
-                                        <h3>Corporate Headquarters</h3>
+                                        <h3>Siège Social</h3>
                                         <p className="address" style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>Aetheris Financial Center<br/>Suite 840, Cryptotech Plaza<br/>New York, NY 10005</p>
                                         
                                         <div className="info-link-row" style={{ display: 'flex', gap: '1rem', marginBottom: '0.8rem' }}>
-                                            <span className="info-label" style={{ minWidth: '130px', color: 'var(--accent-cyan)' }}>Direct Line:</span>
+                                            <span className="info-label" style={{ minWidth: '130px', color: 'var(--accent-cyan)' }}>Ligne Directe :</span>
                                             <a href="tel:+18005550190" className="info-val" style={{ color: '#fff', textDecoration: 'none' }}>+1 (800) 555-0190</a>
                                         </div>
                                         <div className="info-link-row" style={{ display: 'flex', gap: '1rem', marginBottom: '0.8rem' }}>
-                                            <span className="info-label" style={{ minWidth: '130px', color: 'var(--accent-cyan)' }}>Client Support:</span>
+                                            <span className="info-label" style={{ minWidth: '130px', color: 'var(--accent-cyan)' }}>Support Client :</span>
                                             <a href="mailto:support@aetheris.io" className="info-val" style={{ color: '#fff', textDecoration: 'none' }}>support@aetheris.io</a>
                                         </div>
                                         <div className="info-link-row" style={{ display: 'flex', gap: '1rem' }}>
-                                            <span className="info-label" style={{ minWidth: '130px', color: 'var(--accent-cyan)' }}>Institutional:</span>
+                                            <span className="info-label" style={{ minWidth: '130px', color: 'var(--accent-cyan)' }}>Institutionnel :</span>
                                             <a href="mailto:institutions@aetheris.io" className="info-val" style={{ color: '#fff', textDecoration: 'none' }}>institutions@aetheris.io</a>
                                         </div>
                                     </div>
@@ -532,40 +532,40 @@ function App() {
                                 <div className="card glass-card contact-form-card scroll-reveal">
                                     <div className="card-shine"></div>
                                     <div className="card-header" style={{ marginBottom: '1.5rem' }}>
-                                        <h2 style={{ fontSize: '1.35rem', fontWeight: '700' }}>Send Secure Message</h2>
+                                        <h2 style={{ fontSize: '1.35rem', fontWeight: '700' }}>Envoyer un Message Sécurisé</h2>
                                     </div>
                                     <form id="contact-form" autoComplete="off" onSubmit={handleHomeContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
                                         <div className="form-row" style={{ display: 'flex', gap: '1rem' }}>
                                             <div className="form-field half" style={{ flex: 1 }}>
-                                                <label htmlFor="contact-name" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Full Name</label>
-                                                <input type="text" name="name" id="contact-name" placeholder="John Doe" required disabled={isContactSubmitting} style={{ width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)' }} />
+                                                <label htmlFor="contact-name" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Nom Complet</label>
+                                                <input type="text" name="name" id="contact-name" placeholder="Jean Dupont" required disabled={isContactSubmitting} style={{ width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)' }} />
                                             </div>
                                             <div className="form-field half" style={{ flex: 1 }}>
-                                                <label htmlFor="contact-email" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Email Address</label>
-                                                <input type="email" name="email" id="contact-email" placeholder="john@domain.com" required disabled={isContactSubmitting} style={{ width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)' }} />
+                                                <label htmlFor="contact-email" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Adresse Email</label>
+                                                <input type="email" name="email" id="contact-email" placeholder="jean@domaine.com" required disabled={isContactSubmitting} style={{ width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)' }} />
                                             </div>
                                         </div>
                                         <div className="form-field">
-                                            <label htmlFor="contact-phone" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Phone Number</label>
+                                            <label htmlFor="contact-phone" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Numéro de Téléphone</label>
                                             <input type="tel" name="phone" id="contact-phone" placeholder="+1 234 567 8900" required disabled={isContactSubmitting} style={{ width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)' }} />
                                         </div>
                                         <div className="form-field">
-                                            <label htmlFor="contact-message" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Your Message (Optional)</label>
-                                            <textarea name="message" id="contact-message" rows="5" placeholder="Write your message here..." disabled={isContactSubmitting} style={{ width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)', resize: 'vertical' }}></textarea>
+                                            <label htmlFor="contact-message" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Votre Message (Optionnel)</label>
+                                            <textarea name="message" id="contact-message" rows="5" placeholder="Écrivez votre message ici..." disabled={isContactSubmitting} style={{ width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)', resize: 'vertical' }}></textarea>
                                         </div>
                                         <button type="submit" className="btn btn-primary btn-block" disabled={isContactSubmitting}>
-                                            {isContactSubmitting ? 'TRANSMITTING...' : 'TRANSMIT MESSAGE'}
+                                            {isContactSubmitting ? 'TRANSMISSION...' : 'TRANSMETTRE LE MESSAGE'}
                                         </button>
                                     </form>
                                     {contactStatus === 'success' && (
                                         <div className="form-notification success-msg" style={{marginTop: '1rem', color: 'var(--state-success)', background: 'rgba(0, 255, 135, 0.1)', padding: '0.8rem', borderRadius: '8px', display: 'flex', gap: '0.5rem', alignItems: 'center'}}>
                                             <span className="notif-icon">✓</span>
-                                            <span>Message transmitted successfully over encrypted channels.</span>
+                                            <span>Message transmis avec succès sur des canaux cryptés.</span>
                                         </div>
                                     )}
                                     {contactStatus === 'error' && (
                                         <div className="form-notification error-msg" style={{marginTop: '1rem', color: '#ff5f56', background: 'rgba(255, 95, 86, 0.1)', padding: '0.8rem', borderRadius: '8px'}}>
-                                            <span>Failed to transmit message. Please try again.</span>
+                                            <span>Échec de la transmission du message. Veuillez réessayer.</span>
                                         </div>
                                     )}
                                 </div>
@@ -576,19 +576,19 @@ function App() {
 
                 <footer className="main-footer">
                     <div className="footer-left">
-                        <p>&copy; 2026 Aetheris Technologies Inc. All rights reserved.</p>
-                        <p className="disclaimer">Cryptocurrency investments involve high market risk. Past performance does not guarantee future yields.</p>
+                        <p>&copy; 2026 Aetheris Technologies Inc. Tous droits réservés.</p>
+                        <p className="disclaimer">Les investissements en cryptomonnaie comportent un risque de marché élevé. Les performances passées ne garantissent pas les rendements futurs.</p>
                         <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
-                            <a href="#" className="text-link" onClick={(e) => { e.preventDefault(); navigateTo('privacy'); }}>Privacy Policy</a>
-                            <a href="#" className="text-link" onClick={(e) => { e.preventDefault(); navigateTo('terms'); }}>Terms & Conditions</a>
+                            <a href="#" className="text-link" onClick={(e) => { e.preventDefault(); navigateTo('privacy'); }}>Politique de Confidentialité</a>
+                            <a href="#" className="text-link" onClick={(e) => { e.preventDefault(); navigateTo('terms'); }}>Conditions Générales</a>
                         </div>
                     </div>
                     <div className="footer-right">
-                        <button id="btn-admin-console" title="Access Security Console" onClick={() => { playBtnSound('secondary'); setActiveModal('admin'); }}>
+                        <button id="btn-admin-console" title="Accéder à la Console de Sécurité" onClick={() => { playBtnSound('secondary'); setActiveModal('admin'); }}>
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                             </svg>
-                            <span>System Protocol</span>
+                            <span>Protocole Système</span>
                         </button>
                     </div>
                 </footer>

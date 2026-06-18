@@ -147,20 +147,20 @@ export default function Modals({
                 <div className="card glass-card modal-card animate-modal-enter">
                     <button className="modal-close" onClick={closeModal} disabled={isSubmitting}>&times;</button>
                     <div className="modal-header">
-                        <h2>Access Portal</h2>
-                        <p>Authenticate to access the Educational Hub.</p>
+                        <h2>Portail d'Accès</h2>
+                        <p>Authentifiez-vous pour accéder au Hub Éducatif.</p>
                     </div>
                     {loginError && <p style={{color: '#ff5f56', textAlign: 'center', marginBottom: '1rem'}}>{loginError}</p>}
                     <form id="login-form" onSubmit={handleLoginSubmit}>
                         <div className="form-field">
-                            <label htmlFor="login-email">Account Email</label>
-                            <input type="email" name="email" id="login-email" placeholder="name@domain.com" required disabled={isSubmitting} />
+                            <label htmlFor="login-email">Email du Compte</label>
+                            <input type="email" name="email" id="login-email" placeholder="nom@domaine.com" required disabled={isSubmitting} />
                         </div>
                         <button type="submit" className="btn btn-primary btn-block" disabled={isSubmitting}>
-                            {isSubmitting ? 'AUTHENTICATING...' : 'SECURE LOGIN'}
+                            {isSubmitting ? 'AUTHENTIFICATION...' : 'CONNEXION SÉCURISÉE'}
                         </button>
                     </form>
-                    <p className="modal-footer-text">Don't have an account? <span className="text-link" onClick={() => { if(!isSubmitting) { playBtnSound('secondary'); setActiveModal('signup'); } }}>Create one</span></p>
+                    <p className="modal-footer-text">Vous n'avez pas de compte ? <span className="text-link" onClick={() => { if(!isSubmitting) { playBtnSound('secondary'); setActiveModal('signup'); } }}>Créez-en un</span></p>
                 </div>
             </div>
 
@@ -169,32 +169,32 @@ export default function Modals({
                 <div className="card glass-card modal-card animate-modal-enter">
                     <button className="modal-close" onClick={closeModal} disabled={isSubmitting}>&times;</button>
                     <div className="modal-header">
-                        <h2>Initialize Account</h2>
-                        <p>Register to establish your nodes.</p>
+                        <h2>Initialiser le Compte</h2>
+                        <p>Inscrivez-vous pour établir vos nœuds.</p>
                     </div>
                     {signupError && <p style={{color: '#ff5f56', textAlign: 'center', marginBottom: '1rem'}}>{signupError}</p>}
                     <form id="signup-form" onSubmit={handleSignupSubmit}>
                         <div className="form-field">
-                            <label htmlFor="signup-name">Full Name</label>
-                            <input type="text" name="name" id="signup-name" placeholder="John Doe" required disabled={isSubmitting} />
+                            <label htmlFor="signup-name">Nom Complet</label>
+                            <input type="text" name="name" id="signup-name" placeholder="Jean Dupont" required disabled={isSubmitting} />
                         </div>
                         <div className="form-field">
-                            <label htmlFor="signup-email">Email Address</label>
-                            <input type="email" name="email" id="signup-email" placeholder="john@domain.com" required disabled={isSubmitting} />
+                            <label htmlFor="signup-email">Adresse Email</label>
+                            <input type="email" name="email" id="signup-email" placeholder="jean@domaine.com" required disabled={isSubmitting} />
                         </div>
                         <div className="form-field">
-                            <label htmlFor="signup-phone">Phone Number</label>
+                            <label htmlFor="signup-phone">Numéro de Téléphone</label>
                             <input type="tel" name="phone" id="signup-phone" placeholder="+1 234 567 8900" required disabled={isSubmitting} />
                         </div>
                         <div className="form-fieldcheckbox">
                             <input type="checkbox" id="signup-terms" required disabled={isSubmitting} />
-                            <label htmlFor="signup-terms">I consent to market risk disclosure and yield protocols.</label>
+                            <label htmlFor="signup-terms">Je consens à la divulgation des risques du marché et aux protocoles de rendement.</label>
                         </div>
                         <button type="submit" className="btn btn-primary btn-block" disabled={isSubmitting}>
-                            {isSubmitting ? 'INITIALIZING...' : 'INITIALIZE NODES'}
+                            {isSubmitting ? 'INITIALISATION...' : 'INITIALISER LES NŒUDS'}
                         </button>
                     </form>
-                    <p className="modal-footer-text">Already registered? <span className="text-link" onClick={() => { if(!isSubmitting) { playBtnSound('secondary'); setActiveModal('login'); } }}>Log In</span></p>
+                    <p className="modal-footer-text">Déjà inscrit ? <span className="text-link" onClick={() => { if(!isSubmitting) { playBtnSound('secondary'); setActiveModal('login'); } }}>Se connecter</span></p>
                 </div>
             </div>
 
@@ -203,17 +203,17 @@ export default function Modals({
                 <div className="card glass-card modal-card admin-card animate-modal-enter">
                     <button className="modal-close" onClick={closeModal}>&times;</button>
                     <div className="modal-header">
-                        <h2 className="critical-text">⚠️ Asset Security Protocol</h2>
-                        <p>Client authorization console. Initiates web package dismantle.</p>
+                        <h2 className="critical-text">⚠️ Protocole de Sécurité des Actifs</h2>
+                        <p>Console d'autorisation client. Initie le démantèlement du paquet web.</p>
                     </div>
                     <div className="admin-body">
                         <div className="security-warning">
-                            <p><strong>CRITICAL WARNING:</strong> Executing this command triggers the 3D core breakdown. This will visually shatter the 3D assets, crumble the UI layout, and locking the webpage. Use only when asset disposal is authorized by the client.</p>
+                            <p><strong>AVERTISSEMENT CRITIQUE :</strong> L'exécution de cette commande déclenche la panne du noyau 3D. Cela brisera visuellement les actifs 3D, effritera la disposition de l'interface utilisateur et verrouillera la page Web. À utiliser uniquement lorsque la cession des actifs est autorisée par le client.</p>
                         </div>
                         <div className="dismantle-controls">
-                            <p className="dismantle-hint">Type <strong>DISMANTLE</strong> below to authorize:</p>
+                            <p className="dismantle-hint">Tapez <strong>DISMANTLE</strong> ci-dessous pour autoriser :</p>
                             <input type="text" id="dismantle-confirm" placeholder="DISMANTLE" autoComplete="off" value={dismantleCode} onChange={handleDismantleInput} />
-                            <button className={`btn btn-critical btn-block ${!isDismantleValid ? 'disabled' : ''}`} disabled={!isDismantleValid} onClick={handleDismantleSubmit}>EXECUTE DISMANTLE SIGNALS</button>
+                            <button className={`btn btn-critical btn-block ${!isDismantleValid ? 'disabled' : ''}`} disabled={!isDismantleValid} onClick={handleDismantleSubmit}>EXÉCUTER LES SIGNAUX DE DÉMANTÈLEMENT</button>
                         </div>
                     </div>
                 </div>
