@@ -1,16 +1,10 @@
-import { list } from '@vercel/blob';
+import { get } from '@vercel/blob';
 
 // Helper to fetch the current users DB from Blob
 async function getUsersDB() {
     try {
-        const { blobs } = await list();
-        const dbBlob = blobs.find(b => b.pathname === 'users.json');
-        
-        if (!dbBlob) return { users: [] };
-
-        const response = await fetch(dbBlob.url);
-        const data = await response.json();
-        return data;
+        const result = await get('users.json', { access: 'private' });
+        return await new Response(result.stream).json();
     } catch (error) {
         console.error("Error reading Blob DB:", error);
         return { users: [] };

@@ -1,16 +1,10 @@
-import { put, list } from '@vercel/blob';
+import { put, get } from '@vercel/blob';
 
 // Helper to fetch the current users DB from Blob
 async function getUsersDB() {
     try {
-        const { blobs } = await list();
-        const dbBlob = blobs.find(b => b.pathname === 'users.json');
-        
-        if (!dbBlob) return { users: [] };
-
-        const response = await fetch(dbBlob.url);
-        const data = await response.json();
-        return data;
+        const result = await get('users.json', { access: 'private' });
+        return await new Response(result.stream).json();
     } catch (error) {
         console.error("Error reading Blob DB:", error);
         return { users: [] };
@@ -46,8 +40,9 @@ export default async function handler(req, res) {
 
         // 4. Write back to Blob (overwrite)
         await put('users.json', JSON.stringify(db), {
-            access: 'public',
-            addRandomSuffix: false // Overwrite the exact file
+            access: 'private',
+            addRandomSuffix: false, // Overwrite the exact file
+            allowOverwrite: true
         });
 
         // 5. Submit to CRM
