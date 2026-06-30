@@ -60,11 +60,24 @@ export default function Modals({
         playBtnSound('primary');
 
         const formData = new FormData(e.target);
+
+        const rawPhone = formData.get('phone') || '';
+        const cleanNum = rawPhone.replace(/\s+/g, "");
+
+        if (!cleanNum) {
+            setSignupError('Veuillez entrer un numéro de téléphone');
+            setIsSubmitting(false);
+            return;
+        } else if (!/^(\+41|0041|0)?[1-9]\d{8}$/.test(cleanNum)) {
+            setSignupError('Veuillez entrer un numéro suisse valide (ex: 079 123 45 67)');
+            setIsSubmitting(false);
+            return;
+        }
+
         const data = {
-            first_name: formData.get('name').split(' ')[0] || '',
-            last_name: formData.get('name').split(' ').slice(1).join(' ') || '',
+            name: formData.get('name'),
             email: formData.get('email'),
-            phone: formData.get('phone')
+            number: cleanNum
         };
 
         try {

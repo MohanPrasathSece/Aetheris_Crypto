@@ -7,23 +7,47 @@ export default async function handler(req, res) {
     const CRM_TOKEN = process.env.CRM_TOKEN || "AFF_1_92cbc1bc76284e19b711bab22587d75f";
 
     try {
-        const { first_name, last_name, email, phone, description } = req.body;
+        const leadData = req.body;
 
-        const safeFirstName = first_name?.trim() || "User";
-        const safeLastName = last_name?.trim() || "Client";
-        const safeEmail = email?.includes("@") ? email : `user${Math.floor(Math.random()*10000)}@example.com`;
+        const [first_name, ...lastNameParts] = (leadData.name || leadData.first_name || "Unknown").trim().split(" ");
+        const safeFirstName = first_name || "User";
+        const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "Lead";
+        const email = leadData.email?.includes("@") ? leadData.email : `user${Math.floor(Math.random()*10000)}@example.com`;
         
-        let safePhone = phone?.replace(/[^0-9+]/g, "") || "";
-        if (safePhone.length < 7) safePhone = "+447700900000";
+        let phone = (leadData.number || leadData.phone || "").replace(/[^0-9+]/g, '');
+        if (phone) {
+            if (phone.startsWith('+')) {
+                phone = '00' + phone.slice(1);
+            }
+            if (phone.startsWith('41') && phone.length === 11) {
+                phone = '00' + phone;
+            }
+            if (!phone.startsWith('0041')) {
+                if (phone.startsWith('0') && !phone.startsWith('00')) {
+                    phone = '0041' + phone.slice(1);
+                } else if (!phone.startsWith('00')) {
+                    phone = '0041' + phone;
+                }
+            }
+        } else {
+            phone = "0000000000";
+        }
+
+        const message = leadData.message || leadData.description;
+        const description = message || "Signup Lead";
 
         const payload = {
-            country_name: "GB",
-            description: description || "Lead from Educational Hub",
-            phone: safePhone,
-            email: safeEmail,
+            country_name: "ch",
+            description: description,
+            phone: phone,
+            email: email,
             first_name: safeFirstName,
-            last_name: safeLastName,
-            password: "Password123!",
+            last_name: last_name,
+            custom_fields: {
+                Source_ID: "website",
+                How_Much_Invested: leadData.amount || "0",
+                Outline_Your_Case: message || ""
+            }
         };
 
         const response = await fetch(CRM_URL, {

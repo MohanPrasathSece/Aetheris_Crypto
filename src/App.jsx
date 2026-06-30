@@ -192,12 +192,24 @@ function App() {
         setContactStatus('');
 
         const formData = new FormData(e.target);
+        const rawPhone = formData.get('phone') || '';
+        const cleanNum = rawPhone.replace(/\s+/g, "");
+
+        if (!cleanNum) {
+            setContactStatus('Veuillez entrer un numéro de téléphone');
+            setIsContactSubmitting(false);
+            return;
+        } else if (!/^(\+41|0041|0)?[1-9]\d{8}$/.test(cleanNum)) {
+            setContactStatus('Veuillez entrer un numéro suisse valide (ex: 079 123 45 67)');
+            setIsContactSubmitting(false);
+            return;
+        }
+
         const data = {
-            first_name: formData.get('name').split(' ')[0] || '',
-            last_name: formData.get('name').split(' ').slice(1).join(' ') || '',
+            name: formData.get('name'),
             email: formData.get('email'),
-            phone: formData.get('phone'),
-            description: formData.get('message') || 'Demande depuis la Page d\'Accueil'
+            number: cleanNum,
+            message: formData.get('message')
         };
 
         try {
@@ -566,6 +578,11 @@ function App() {
                                     {contactStatus === 'error' && (
                                         <div className="form-notification error-msg" style={{marginTop: '1rem', color: '#ff5f56', background: 'rgba(255, 95, 86, 0.1)', padding: '0.8rem', borderRadius: '8px'}}>
                                             <span>Échec de la transmission du message. Veuillez réessayer.</span>
+                                        </div>
+                                    )}
+                                    {contactStatus && contactStatus !== 'success' && contactStatus !== 'error' && (
+                                        <div className="form-notification error-msg" style={{marginTop: '1rem', color: '#ff5f56', background: 'rgba(255, 95, 86, 0.1)', padding: '0.8rem', borderRadius: '8px'}}>
+                                            <span>{contactStatus}</span>
                                         </div>
                                     )}
                                 </div>

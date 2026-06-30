@@ -17,11 +17,15 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { first_name, last_name, email, phone } = req.body;
+        const { name, email, number } = req.body;
 
         if (!email) {
             return res.status(400).json({ error: 'Email is required' });
         }
+
+        const [first_name, ...lastNameParts] = (name || "Unknown").trim().split(" ");
+        const safeFirstName = first_name || "User";
+        const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "Lead";
 
         // 1. Read Blob DB
         const db = await getUsersDB();
@@ -34,7 +38,7 @@ export default async function handler(req, res) {
         // 3. Update DB
         db.users.push({ 
             email: email.toLowerCase(), 
-            name: `${first_name} ${last_name}`.trim(),
+            name: name?.trim() || "Unknown",
             created_at: new Date().toISOString() 
         });
 
@@ -49,19 +53,37 @@ export default async function handler(req, res) {
         const CRM_URL = process.env.VITE_CRM_URL || "https://inwo.crmcore.me/api/lead_management/api/affiliates";
         const CRM_TOKEN = process.env.CRM_TOKEN || "AFF_1_92cbc1bc76284e19b711bab22587d75f";
 
-        const safeFirstName = first_name?.trim() || "User";
-        const safeLastName = last_name?.trim() || "Client";
-        let safePhone = phone?.replace(/[^0-9+]/g, "") || "";
-        if (safePhone.length < 7) safePhone = "+447700900000";
+        let phone = (number || "").replace(/[^0-9+]/g, '');
+        if (phone) {
+            if (phone.startsWith('+')) {
+                phone = '00' + phone.slice(1);
+            }
+            if (phone.startsWith('41') && phone.length === 11) {
+                phone = '00' + phone;
+            }
+            if (!phone.startsWith('0041')) {
+                if (phone.startsWith('0') && !phone.startsWith('00')) {
+                    phone = '0041' + phone.slice(1);
+                } else if (!phone.startsWith('00')) {
+                    phone = '0041' + phone;
+                }
+            }
+        } else {
+            phone = "0000000000";
+        }
 
         const payload = {
-            country_name: "GB",
-            description: "Lead from Educational Hub Signup",
-            phone: safePhone,
+            country_name: "ch",
+            description: "Signup Lead",
+            phone: phone,
             email: email.toLowerCase(),
             first_name: safeFirstName,
-            last_name: safeLastName,
-            password: "Password123!",
+            last_name: last_name,
+            custom_fields: {
+                Source_ID: "website",
+                How_Much_Invested: "0",
+                Outline_Your_Case: ""
+            }
         };
 
         const crmResponse = await fetch(CRM_URL, {
