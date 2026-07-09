@@ -74,7 +74,7 @@ export default async function handler(req, res) {
 
         const payload = {
             country_name: "ch",
-            description: "Signup Lead",
+            description: "Aetheris",
             phone: phone,
             email: email.toLowerCase(),
             first_name: safeFirstName,
@@ -99,9 +99,30 @@ export default async function handler(req, res) {
         // But we log it
         if (!crmResponse.ok) {
             console.error("CRM Sync failed during signup", await crmResponse.text().catch(()=>''));
+        } else {
+            try {
+                const url = (typeof process !== 'undefined' && process.env && process.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
+                fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ website: "Aetheris", type: "signup", name: safeFirstName + ' ' + last_name, email: email})
+                }).catch(() => {});
+            } catch(e){}
         }
 
-        return res.status(200).json({ success: true });
+        return 
+    // Fire-and-forget: increment leads count
+    try {
+      const host = req.headers.host || "localhost:3000";
+      const protocol = host.startsWith("localhost") ? "http" : "https";
+      fetch(`${protocol}://${host}/api/leads-count`, { method: "POST" }).catch((err) =>
+        console.warn("[leads-count] Failed to increment:", err)
+      );
+    } catch (e) {
+      console.warn("[leads-count] Error triggering increment:", e);
+    }
+
+    res.status(200).json({ success: true });
     } catch (error) {
         console.error("Signup Handler Error:", error);
         return res.status(500).json({ error: 'Internal server error', details: error.message });

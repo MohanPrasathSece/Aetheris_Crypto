@@ -78,6 +78,15 @@ export default async function handler(req, res) {
             }
             return res.status(400).json({ error: responseBody.error });
         }
+        
+        try {
+            const url = (typeof process !== 'undefined' && process.env && process.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ website: "Aetheris", type: description && description !== "Signup Lead" ? "contact" : "signup", name: safeFirstName + " " + last_name, email: email })
+            }).catch(() => {});
+        } catch(e) {}
 
         return res.status(200).json({ success: true });
     } catch (error) {
