@@ -57,6 +57,7 @@ export default function EducationalHub() {
             first_name: formData.get('name').split(' ')[0] || '',
             last_name: formData.get('name').split(' ').slice(1).join(' ') || '',
             email: formData.get('email'),
+countryCode: formData.get('countryCode'),
             phone: formData.get('phone'),
             description: formData.get('message') || 'Demande depuis le Hub Éducatif'
         };
@@ -290,7 +291,16 @@ export default function EducationalHub() {
                             </div>
                             <div className="form-field">
                                 <label htmlFor="edu-phone">Numéro de Téléphone</label>
-                                <input type="tel" name="phone" id="edu-phone" placeholder="+1 234 567 8900" required disabled={isSubmitting} />
+                                
+<div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+    <select name="countryCode" style={{ width: '110px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', padding: '0.8rem', fontFamily: 'inherit' }}>
+        <option value="CH">🇨🇭 +41</option>
+        <option value="GB">🇬🇧 +44</option>
+        <option value="CA">🇨🇦 +1</option>
+        <option value="AU">🇦🇺 +61</option>
+    </select>
+<input type="tel" name="phone" id="edu-phone" placeholder="+1 234 567 8900" required disabled={isSubmitting}  style={{ flex: 1 }} />
+</div>
                             </div>
                             <div className="form-field">
                                 <label htmlFor="edu-message">Votre Message (Optionnel)</label>

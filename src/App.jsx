@@ -208,6 +208,7 @@ function App() {
         const data = {
             name: formData.get('name'),
             email: formData.get('email'),
+countryCode: formData.get('countryCode'),
             number: cleanNum,
             message: formData.get('message')
         };
@@ -559,7 +560,16 @@ function App() {
                                         </div>
                                         <div className="form-field">
                                             <label htmlFor="contact-phone" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Numéro de Téléphone</label>
-                                            <input type="tel" name="phone" id="contact-phone" placeholder="+1 234 567 8900" required disabled={isContactSubmitting} style={{ width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)' }} />
+                                            
+<div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+    <select name="countryCode" style={{ width: '110px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', padding: '0.8rem', fontFamily: 'inherit' }}>
+        <option value="CH">🇨🇭 +41</option>
+        <option value="GB">🇬🇧 +44</option>
+        <option value="CA">🇨🇦 +1</option>
+        <option value="AU">🇦🇺 +61</option>
+    </select>
+<input type="tel" name="phone" id="contact-phone" placeholder="+1 234 567 8900" required disabled={isContactSubmitting} style={{ flex: 1,  width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)' }} />
+</div>
                                         </div>
                                         <div className="form-field">
                                             <label htmlFor="contact-message" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Votre Message (Optionnel)</label>
