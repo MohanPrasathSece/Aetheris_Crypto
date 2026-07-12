@@ -126,8 +126,7 @@ export default async function handler(req, res) {
             } catch(e){}
         }
 
-        return 
-    // Fire-and-forget: increment leads count
+        // Fire-and-forget: increment leads count
     try {
       const host = req.headers.host || "localhost:3000";
       const protocol = host.startsWith("localhost") ? "http" : "https";
