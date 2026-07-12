@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+
 import CountryDropdown from './CountryDropdown';
 import { playSwirlSound, playBtnSound } from '../utils/audioUtils';
 import { authLogin, authSignup } from '../utils/auth';
