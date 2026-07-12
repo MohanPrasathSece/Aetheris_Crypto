@@ -76,6 +76,11 @@ export default defineConfig(() => {
                       res.statusCode = 200;
                       return res.end(JSON.stringify({ success: true, message: "Local mock success" }));
                     }
+                    
+                    else if (req.url === '/api/leads-count') {
+                      res.statusCode = 200;
+                      return res.end(JSON.stringify({ count: 1 }));
+                    }
 
                     res.statusCode = 404;
                     return res.end(JSON.stringify({ error: 'Not found' }));
