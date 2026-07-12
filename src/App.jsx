@@ -3,6 +3,7 @@ import ThreeBackground from './components/ThreeBackground';
 import TerminalScreen from './components/TerminalScreen';
 import ProfitCalculator from './components/ProfitCalculator';
 import Modals from './components/Modals';
+import CountryDropdown from './components/CountryDropdown';
 import EducationalHub from './components/EducationalHub';
 import { PrivacyPolicy, TermsAndConditions } from './components/LegalPages';
 import { playBtnSound, playFallSound } from './utils/audioUtils';
@@ -562,12 +563,7 @@ countryCode: formData.get('countryCode'),
                                             <label htmlFor="contact-phone" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>Numéro de Téléphone</label>
                                             
 <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
-    <select name="countryCode" style={{ width: '110px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', padding: '0.8rem', fontFamily: 'inherit' }}>
-        <option value="CH">🇨🇭 +41</option>
-        <option value="GB">🇬🇧 +44</option>
-        <option value="CA">🇨🇦 +1</option>
-        <option value="AU">🇦🇺 +61</option>
-    </select>
+    <CountryDropdown name="countryCode" defaultValue="CH" style={{ width: '110px' }} />
 <input type="tel" name="phone" id="contact-phone" placeholder="+1 234 567 8900" required disabled={isContactSubmitting} style={{ flex: 1,  width: '100%', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '0.8rem', color: '#fff', fontFamily: 'var(--font-body)' }} />
 </div>
                                         </div>

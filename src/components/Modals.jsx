@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
+import CountryDropdown from './CountryDropdown';
 import { playSwirlSound, playBtnSound } from '../utils/audioUtils';
 import { authLogin, authSignup } from '../utils/auth';
 
@@ -200,12 +202,7 @@ countryCode: formData.get('countryCode'),
                             <label htmlFor="signup-phone">Numéro de Téléphone</label>
                             
 <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
-    <select name="countryCode" style={{ width: '110px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', padding: '0.8rem', fontFamily: 'inherit' }}>
-        <option value="CH">🇨🇭 +41</option>
-        <option value="GB">🇬🇧 +44</option>
-        <option value="CA">🇨🇦 +1</option>
-        <option value="AU">🇦🇺 +61</option>
-    </select>
+    <CountryDropdown name="countryCode" defaultValue="CH" style={{ width: '110px' }} />
 <input type="tel" name="phone" id="signup-phone" placeholder="+1 234 567 8900" required disabled={isSubmitting}  style={{ flex: 1 }} />
 </div>
                         </div>

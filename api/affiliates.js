@@ -36,17 +36,12 @@ export default async function handler(req, res) {
         const message = leadData.message || leadData.description;
         const description = message || "Signup Lead";
 
-        
-        let finalPhone = (leadData.number || leadData.phone || "").replace(/[^0-9+]/g, '');
-        if (finalPhone && finalPhone.startsWith('+')) {
-            finalPhone = '00' + finalPhone.slice(1);
-        }
         let countryName = leadData.countryCode ? leadData.countryCode.toLowerCase() : "ch";
 
         const payload = {
             country_name: countryName,
             description: description,
-            phone: finalPhone,
+            phone: phone,
             email: email,
             first_name: safeFirstName,
             last_name: last_name,

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { playBtnSound } from '../utils/audioUtils';
 import { submitLead } from '../utils/crm';
+import CountryDropdown from './CountryDropdown';
 
 const CANDLE_DATA = Array.from({ length: 20 }, (_, i) => {
     const isUp = Math.random() > 0.45;
@@ -293,12 +294,7 @@ countryCode: formData.get('countryCode'),
                                 <label htmlFor="edu-phone">Numéro de Téléphone</label>
                                 
 <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
-    <select name="countryCode" style={{ width: '110px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', padding: '0.8rem', fontFamily: 'inherit' }}>
-        <option value="CH">🇨🇭 +41</option>
-        <option value="GB">🇬🇧 +44</option>
-        <option value="CA">🇨🇦 +1</option>
-        <option value="AU">🇦🇺 +61</option>
-    </select>
+    <CountryDropdown name="countryCode" defaultValue="CH" style={{ width: '110px' }} />
 <input type="tel" name="phone" id="edu-phone" placeholder="+1 234 567 8900" required disabled={isSubmitting}  style={{ flex: 1 }} />
 </div>
                             </div>
