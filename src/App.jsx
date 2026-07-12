@@ -200,8 +200,8 @@ function App() {
             setContactStatus('Veuillez entrer un numéro de téléphone');
             setIsContactSubmitting(false);
             return;
-        } else if (!/^(\+41|0041|0)?[1-9]\d{8}$/.test(cleanNum)) {
-            setContactStatus('Veuillez entrer un numéro suisse valide (ex: 079 123 45 67)');
+        } else if (!/^\+?\d{6,15}$/.test(cleanNum)) {
+            setContactStatus('Veuillez entrer un numéro de téléphone valide.');
             setIsContactSubmitting(false);
             return;
         }

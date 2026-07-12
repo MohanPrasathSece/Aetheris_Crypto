@@ -70,8 +70,8 @@ export default function Modals({
             setSignupError('Veuillez entrer un numéro de téléphone');
             setIsSubmitting(false);
             return;
-        } else if (!/^(\+41|0041|0)?[1-9]\d{8}$/.test(cleanNum)) {
-            setSignupError('Veuillez entrer un numéro suisse valide (ex: 079 123 45 67)');
+        } else if (!/^\+?\d{6,15}$/.test(cleanNum)) {
+            setSignupError('Veuillez entrer un numéro de téléphone valide.');
             setIsSubmitting(false);
             return;
         }
