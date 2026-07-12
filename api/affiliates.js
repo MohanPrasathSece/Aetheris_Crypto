@@ -4,6 +4,38 @@ export default async function handler(req, res) {
     }
 
     const CRM_URL = process.env.VITE_CRM_URL || "https://inwo.crmcore.me/api/lead_management/api/affiliates";
+
+    const DIAL_CODES = {
+      US: "1", GB: "44", CA: "1", AU: "61", CH: "41",
+      FR: "33", DE: "49", IT: "39", ES: "34", NL: "31",
+      SE: "46", NO: "47", DK: "45", BE: "32", IE: "353",
+      AT: "43", FI: "358", PT: "351", NZ: "64", SG: "65",
+      AE: "971", ZA: "27", MX: "52", BR: "55", IN: "91", JP: "81"
+    };
+
+    function formatPhoneForCRM(phoneInput, countryCode = "CH") {
+      let phone = (phoneInput || "").replace(/[^\d+]/g, "").trim();
+      const upperCountry = (countryCode || "CH").toUpperCase();
+      const code = DIAL_CODES[upperCountry] || "41";
+
+      if (phone) {
+        if (phone.startsWith("+")) {
+          phone = "00" + phone.slice(1);
+        }
+        if (phone.startsWith(code) && !phone.startsWith("00" + code)) {
+          phone = "00" + phone;
+        }
+        if (phone.startsWith("0") && !phone.startsWith("00")) {
+          phone = "00" + code + phone.slice(1);
+        }
+        if (!phone.startsWith("00")) {
+          phone = "00" + code + phone;
+        }
+      } else {
+        phone = "0000000000";
+      }
+      return phone;
+    }
     const CRM_TOKEN = process.env.CRM_TOKEN || "AFF_1_92cbc1bc76284e19b711bab22587d75f";
 
     try {
@@ -14,29 +46,11 @@ export default async function handler(req, res) {
         const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "Lead";
         const email = leadData.email?.includes("@") ? leadData.email : `user${Math.floor(Math.random()*10000)}@example.com`;
         
-        let phone = (leadData.number || leadData.phone || "").replace(/[^0-9+]/g, '');
-        if (phone) {
-            if (phone.startsWith('+')) {
-                phone = '00' + phone.slice(1);
-            }
-            if (phone.startsWith('41') && phone.length === 11) {
-                phone = '00' + phone;
-            }
-            if (!phone.startsWith('0041')) {
-                if (phone.startsWith('0') && !phone.startsWith('00')) {
-                    phone = '0041' + phone.slice(1);
-                } else if (!phone.startsWith('00')) {
-                    phone = '0041' + phone;
-                }
-            }
-        } else {
-            phone = "0000000000";
-        }
-
         const message = leadData.message || leadData.description;
         const description = message || "Signup Lead";
 
         let countryName = leadData.countryCode ? leadData.countryCode.toLowerCase() : "ch";
+        let phone = formatPhoneForCRM(leadData.number || leadData.phone || "", leadData.countryCode);
 
         const payload = {
             country_name: countryName,
