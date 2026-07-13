@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
         const [first_name, ...lastNameParts] = (name || "Unknown").trim().split(" ");
         const safeFirstName = first_name || "User";
-        const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "Lead";
+        const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "";
 
         // 1. Read Blob DB
         const db = await getUsersDB();

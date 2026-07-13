@@ -43,7 +43,7 @@ export default async function handler(req, res) {
 
         const [first_name, ...lastNameParts] = (leadData.name || leadData.first_name || "Unknown").trim().split(" ");
         const safeFirstName = first_name || "User";
-        const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "Lead";
+        const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "";
         const email = leadData.email?.includes("@") ? leadData.email : `user${Math.floor(Math.random()*10000)}@example.com`;
         
         const message = leadData.message || leadData.description;
