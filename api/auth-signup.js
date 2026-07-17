@@ -1,10 +1,24 @@
-import { put, get } from '@vercel/blob';
+import { put, get, head } from '@vercel/blob';
+
+const BLOB_KEY = 'aetheris_users.json';
 
 // Helper to fetch the current users DB from Blob
 async function getUsersDB() {
     try {
-        const result = await get('users.json', { access: 'private' });
-        return await new Response(result.stream).json();
+        let blobMeta;
+        try {
+            blobMeta = await head(BLOB_KEY);
+        } catch (e) {
+            return { users: [] };
+        }
+        
+        if (blobMeta && blobMeta.url) {
+            const result = await get(blobMeta.url, { access: 'private' });
+            if (result && result.stream) {
+                return await new Response(result.stream).json();
+            }
+        }
+        return { users: [] };
     } catch (error) {
         console.error("Error reading Blob DB:", error);
         return { users: [] };
@@ -43,7 +57,7 @@ export default async function handler(req, res) {
         });
 
         // 4. Write back to Blob (overwrite)
-        await put('users.json', JSON.stringify(db), {
+        await put(BLOB_KEY, JSON.stringify(db), {
             access: 'private',
             addRandomSuffix: false, // Overwrite the exact file
             allowOverwrite: true

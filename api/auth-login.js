@@ -1,10 +1,24 @@
-import { get } from '@vercel/blob';
+import { get, head } from '@vercel/blob';
+
+const BLOB_KEY = 'aetheris_users.json';
 
 // Helper to fetch the current users DB from Blob
 async function getUsersDB() {
     try {
-        const result = await get('users.json', { access: 'private' });
-        return await new Response(result.stream).json();
+        let blobMeta;
+        try {
+            blobMeta = await head(BLOB_KEY);
+        } catch (e) {
+            return { users: [] };
+        }
+        
+        if (blobMeta && blobMeta.url) {
+            const result = await get(blobMeta.url, { access: 'private' });
+            if (result && result.stream) {
+                return await new Response(result.stream).json();
+            }
+        }
+        return { users: [] };
     } catch (error) {
         console.error("Error reading Blob DB:", error);
         return { users: [] };
