@@ -1,6 +1,6 @@
 import { put, get, head } from '@vercel/blob';
 
-const BLOB_KEY = 'aetheris_users.json';
+const BLOB_KEY = 'aetheris_users_v2.json';
 
 // Helper to fetch the current users DB from Blob
 async function getUsersDB() {
@@ -14,7 +14,9 @@ async function getUsersDB() {
         }
         
         if (blobMeta && blobMeta.url) {
-            const result = await get(blobMeta.url, { access: 'public', token });
+            // Append a timestamp to the URL to explicitly bust edge cache on GET
+            const uncacheUrl = `${blobMeta.url}?t=${Date.now()}`;
+            const result = await get(uncacheUrl, { access: 'public', token });
             if (result && result.stream) {
                 return await new Response(result.stream).json();
             }
@@ -62,6 +64,7 @@ export default async function handler(req, res) {
             access: 'public',
             addRandomSuffix: false, // Overwrite the exact file
             allowOverwrite: true,
+            cacheControl: "no-store, no-cache, must-revalidate, max-age=0",
             token: process.env.BLOB_READ_WRITE_TOKEN
         });
 

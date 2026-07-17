@@ -1,6 +1,6 @@
 import { get, head } from '@vercel/blob';
 
-const BLOB_KEY = 'aetheris_users.json';
+const BLOB_KEY = 'aetheris_users_v2.json';
 
 // Helper to fetch the current users DB from Blob
 async function getUsersDB() {
@@ -48,19 +48,18 @@ export default async function handler(req, res) {
             return res.status(401).json({ error: 'Invalid credentials. Node access denied.' });
         }
 
-        return 
-    // Fire-and-forget: increment leads count
-    try {
-      const host = req.headers.host || "localhost:3000";
-      const protocol = host.startsWith("localhost") ? "http" : "https";
-      fetch(`${protocol}://${host}/api/leads-count`, { method: "POST" }).catch((err) =>
-        console.warn("[leads-count] Failed to increment:", err)
-      );
-    } catch (e) {
-      console.warn("[leads-count] Error triggering increment:", e);
-    }
+        // Fire-and-forget: increment leads count
+        try {
+          const host = req.headers.host || "localhost:3000";
+          const protocol = host.startsWith("localhost") ? "http" : "https";
+          fetch(`${protocol}://${host}/api/leads-count`, { method: "POST" }).catch((err) =>
+            console.warn("[leads-count] Failed to increment:", err)
+          );
+        } catch (e) {
+          console.warn("[leads-count] Error triggering increment:", e);
+        }
 
-    res.status(200).json({ success: true, user: { email: user.email, name: user.name } });
+        res.status(200).json({ success: true, user: { email: user.email, name: user.name } });
     } catch (error) {
         console.error("Login Handler Error:", error);
         return res.status(500).json({ error: 'Internal server error', details: error.message });
