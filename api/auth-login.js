@@ -4,16 +4,17 @@ const BLOB_KEY = 'aetheris_users.json';
 
 // Helper to fetch the current users DB from Blob
 async function getUsersDB() {
+    const token = process.env.BLOB_READ_WRITE_TOKEN;
     try {
         let blobMeta;
         try {
-            blobMeta = await head(BLOB_KEY);
+            blobMeta = await head(BLOB_KEY, { token });
         } catch (e) {
             return { users: [] };
         }
         
         if (blobMeta && blobMeta.url) {
-            const result = await get(blobMeta.url, { access: 'public' });
+            const result = await get(blobMeta.url, { access: 'public', token });
             if (result && result.stream) {
                 return await new Response(result.stream).json();
             }
