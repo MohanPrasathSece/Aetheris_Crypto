@@ -13,7 +13,7 @@ async function getUsersDB() {
         }
         
         if (blobMeta && blobMeta.url) {
-            const result = await get(blobMeta.url, { access: 'private' });
+            const result = await get(blobMeta.url, { access: 'public' });
             if (result && result.stream) {
                 return await new Response(result.stream).json();
             }
