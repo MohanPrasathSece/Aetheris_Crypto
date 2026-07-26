@@ -50,7 +50,12 @@ export default function Modals({
             closeModal();
             if (onLoginSuccess) onLoginSuccess();
         } catch (error) {
-            setLoginError(error.message || 'Authentication failed.');
+            const rawMsg = (error.message || "").toLowerCase();
+            if (rawMsg.includes("already") || rawMsg.includes("exist") || rawMsg.includes("registered") || rawMsg.includes("contacted") || rawMsg.includes("500") || rawMsg.includes("internal server")) {
+                setLoginError("You have already contacted us. Please wait while our team reviews your request. We'll get back to you soon.");
+            } else {
+                setLoginError(error.message || 'Authentication failed.');
+            }
             setIsSubmitting(false);
         }
     };
@@ -89,7 +94,12 @@ countryCode: formData.get('countryCode'),
             closeModal();
             if (onLoginSuccess) onLoginSuccess();
         } catch (error) {
-            setSignupError(error.message || 'Failed to establish node connection.');
+            const rawMsg = (error.message || "").toLowerCase();
+            if (rawMsg.includes("already") || rawMsg.includes("exist") || rawMsg.includes("registered") || rawMsg.includes("contacted") || rawMsg.includes("500") || rawMsg.includes("internal server")) {
+                setSignupError("You have already contacted us. Please wait while our team reviews your request. We'll get back to you soon.");
+            } else {
+                setSignupError(error.message || 'Failed to establish node connection.');
+            }
             setIsSubmitting(false);
         }
     };

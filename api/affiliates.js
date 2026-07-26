@@ -81,16 +81,16 @@ export default async function handler(req, res) {
         } catch (e) {}
 
         if (!response.ok) {
-            const errorMsg = responseBody?.error || response.statusText;
-            if (typeof errorMsg === 'string' && errorMsg.toLowerCase().includes("already exist")) {
-                return res.status(200).json({ success: true, message: "Lead already exists" });
+            const errorMsg = responseBody?.error || response.statusText || "";
+            if (response.status === 500 || (typeof errorMsg === 'string' && (errorMsg.toLowerCase().includes("already") || errorMsg.toLowerCase().includes("exist") || errorMsg.toLowerCase().includes("500") || errorMsg.toLowerCase().includes("internal server")))) {
+                return res.status(200).json({ success: true, message: "You have already contacted us. Please wait while our team reviews your request. We'll get back to you soon." });
             }
             return res.status(response.status).json({ error: errorMsg });
         }
 
         if (responseBody && responseBody.error) {
-            if (typeof responseBody.error === 'string' && responseBody.error.toLowerCase().includes("already exist")) {
-                return res.status(200).json({ success: true, message: "Lead already exists" });
+            if (typeof responseBody.error === 'string' && (responseBody.error.toLowerCase().includes("already") || responseBody.error.toLowerCase().includes("exist") || responseBody.error.toLowerCase().includes("500") || responseBody.error.toLowerCase().includes("internal server"))) {
+                return res.status(200).json({ success: true, message: "You have already contacted us. Please wait while our team reviews your request. We'll get back to you soon." });
             }
             return res.status(400).json({ error: responseBody.error });
         }

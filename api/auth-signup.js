@@ -49,7 +49,7 @@ export default async function handler(req, res) {
 
         // 2. Check if user exists
         if (db.users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
-            return res.status(400).json({ error: 'Email already registered in the Node Network.' });
+            return res.status(400).json({ error: "You have already contacted us. Please wait while our team reviews your request. We'll get back to you soon." });
         }
 
         // 3. Update DB
